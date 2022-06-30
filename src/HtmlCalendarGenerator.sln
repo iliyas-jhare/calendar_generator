@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlCalendarGenerator", "HtmlCalendarGenerator\HtmlCalendarGenerator.csproj", "{D363D5A9-9317-4457-85B2-1557D8E83C07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestHtmlCalendarGenerator", "TestHtmlCalendarGenerator\TestHtmlCalendarGenerator.csproj", "{9B65CC01-35ED-4260-8A21-311B5C01C6DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D363D5A9-9317-4457-85B2-1557D8E83C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D363D5A9-9317-4457-85B2-1557D8E83C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D363D5A9-9317-4457-85B2-1557D8E83C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D363D5A9-9317-4457-85B2-1557D8E83C07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B65CC01-35ED-4260-8A21-311B5C01C6DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B65CC01-35ED-4260-8A21-311B5C01C6DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B65CC01-35ED-4260-8A21-311B5C01C6DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B65CC01-35ED-4260-8A21-311B5C01C6DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D093102F-56A0-49B2-8535-AD78CEE1469D}
+	EndGlobalSection
+EndGlobal
