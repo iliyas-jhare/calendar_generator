@@ -13,8 +13,8 @@ public static class ProgramHelp
             .AppendLine($"{Assembly.GetExecutingAssembly().GetName().Name} -o calendar.html -y 2020")
             .AppendLine()
             .AppendLine("Options:")
-            .AppendLine("  -h [Optional]   Show help")
-            .AppendLine("  -o [Required]   Name of the output file")
-            .AppendLine("  -y [Required]   Year of the calendar")
+            .AppendLine("  -h              Show help")
+            .AppendLine("  -o  [Required]  Name of the output file")
+            .AppendLine("  -y  [Required]  Year of the calendar")
             .ToString();
 }
