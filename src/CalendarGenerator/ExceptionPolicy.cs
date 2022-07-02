@@ -1,4 +1,4 @@
-﻿namespace HtmlCalendarGenerator;
+﻿namespace CalendarGenerator;
 
 public static class ExceptionPolicy
 {

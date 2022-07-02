@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HtmlCalendarGenerator\HtmlCalendarGenerator.csproj" />
+    <ProjectReference Include="..\CalendarGenerator\CalendarGenerator.csproj" />
   </ItemGroup>
 
 </Project>

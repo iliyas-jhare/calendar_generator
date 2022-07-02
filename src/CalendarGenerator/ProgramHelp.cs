@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Text;
 
-namespace HtmlCalendarGenerator;
+namespace CalendarGenerator;
 
 public static class ProgramHelp
 {

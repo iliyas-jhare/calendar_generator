@@ -1,18 +1,18 @@
-﻿using static HtmlCalendarGenerator.Constants;
+﻿using static CalendarGenerator.Constants;
 
-namespace HtmlCalendarGenerator;
+namespace CalendarGenerator;
 
-public class ProgramArgs
+public class OptionsFactory
 {
     private IEnumerable<string> AllOptions { get; }
     private IEnumerable<string> RequiredOptions { get; }
 
-    public ProgramArgs()
+    public OptionsFactory()
     {
         AllOptions = new List<string>
         {
             OutputOptionName,
-            YearOptionName, 
+            YearOptionName,
             HelpOptionName
         };
         RequiredOptions = new List<string>
@@ -22,7 +22,7 @@ public class ProgramArgs
         };
     }
 
-    public IEnumerable<Option> Parse(IReadOnlyList<string> args)
+    public IEnumerable<Option> CreateOptions(IReadOnlyList<string> args)
     {
         if (args is null) yield break;
         for (var i = 0; i < args.Count; i++)
@@ -36,6 +36,8 @@ public class ProgramArgs
 
     public bool RequiredOptionsExist(IEnumerable<Option> options)
         => RequiredOptions.All(target => options.Any(o => OptionExist(o, target)));
+
+    #region Detail
 
     private static bool OptionExist(Option option, string name)
         => option is not null &&
@@ -51,4 +53,6 @@ public class ProgramArgs
 
     private static string GetOptionValue(IReadOnlyList<string> args, int position)
         => position + 1 < args.Count ? args[position + 1] : default;
+
+    #endregion
 }

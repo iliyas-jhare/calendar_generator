@@ -1,20 +1,20 @@
-using HtmlCalendarGenerator;
-using static HtmlCalendarGenerator.Constants;
+using CalendarGenerator;
+using static CalendarGenerator.Constants;
 
-namespace TestHtmlCalendarGenerator;
+namespace TestCalendarGenerator;
 
 [TestClass]
-public class ProgramArgsTests
+public class OptionsFactoryTests
 {
     [DataTestMethod]
     [DynamicData(nameof(DataOne))]
-    public void Given_program_arguments_Then_should_parse_them(string[] arguments, Option[] expected)
+    public void Given_program_args_Then_should_create_options(string[] args, Option[] expected)
     {
         // Arrange
-        var underTest = new ProgramArgs();
+        var underTest = new OptionsFactory();
 
         // Act
-        var actual = underTest.Parse(arguments).ToArray();
+        var actual = underTest.CreateOptions(args).ToArray();
 
         // Assert
         CollectionAssert.AreEqual(expected, actual);
@@ -22,13 +22,13 @@ public class ProgramArgsTests
 
     [DataTestMethod]
     [DynamicData(nameof(DataTwo))]
-    public void Given_program_arguments_Then_should_check_for_required_arguments(string[] arguments, bool expected)
+    public void Given_program_args_Then_should_check_for_required_options(string[] args, bool expected)
     {
         // Arrange
-        var underTest = new ProgramArgs();
+        var underTest = new OptionsFactory();
 
         // Act
-        var actual = underTest.RequiredOptionsExist(underTest.Parse(arguments));
+        var actual = underTest.RequiredOptionsExist(underTest.CreateOptions(args));
 
         // Assert
         Assert.AreEqual(expected, actual);
@@ -61,9 +61,9 @@ public class ProgramArgsTests
             {
                 new[]
                 {
-                    OutputOptionName, 
+                    OutputOptionName,
                     "file",
-                    YearOptionName, 
+                    YearOptionName,
                     "year"
                 },
                 new Option[]
@@ -86,8 +86,8 @@ public class ProgramArgsTests
             {
                 new[]
                 {
-                    YearOptionName, 
-                    "year", 
+                    YearOptionName,
+                    "year",
                     OutputOptionName,
                     "file"
                 }, true
@@ -99,8 +99,8 @@ public class ProgramArgsTests
                     YearOptionName,
                     "year",
                     OutputOptionName,
-                    "file", 
-                    HelpOptionName, 
+                    "file",
+                    HelpOptionName,
                     "blah"
                 }, true
             };
