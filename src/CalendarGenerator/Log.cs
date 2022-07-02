@@ -15,6 +15,8 @@ public static class Log
     public static void Exception(Exception e)
         => Write(ErrorText, CollectInfo(e));
 
+    #region Detail
+
     private static void Write(string category, string message)
         => Console.WriteLine(Build(category, message));
 
@@ -30,4 +32,6 @@ public static class Log
         yield return $"Message: {e.Message}";
         yield return $"Stack: {e.StackTrace}";
     }
+
+    #endregion
 }

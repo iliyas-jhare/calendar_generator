@@ -3,14 +3,14 @@
 public class CalendarYearFactory
 {
     private readonly CalendarDayFactory calendarDayFactory;
-    private int weekCounter;
+    private int weeksCounter;
 
     private IReadOnlyList<int> MonthNumbers { get; }
 
     public CalendarYearFactory(CalendarDayFactory calendarDayFactory)
     {
         this.calendarDayFactory = calendarDayFactory;
-        weekCounter = 1;
+        weeksCounter = 1;
         MonthNumbers = Enumerable.Range(1, 12).ToArray();
     }
 
@@ -27,7 +27,7 @@ public class CalendarYearFactory
             .Select(year =>
             {
                 // reset weeks counter
-                weekCounter = 1;
+                weeksCounter = 1;
                 return new CalendarYear(year, CreateCalendarMonths(year));
             })
             .ToArray();
@@ -38,7 +38,7 @@ public class CalendarYearFactory
     private IReadOnlyList<CalendarMonth> CreateCalendarMonths(int year) =>
         MonthNumbers.Select(month => new CalendarMonth(month, CreateCalendarWeeks(year, month))).ToArray();
 
-    private IReadOnlyList<CalendarWeek> CreateCalendarWeeks(int year, int month) => 
+    private IReadOnlyList<CalendarWeek> CreateCalendarWeeks(int year, int month) =>
         CreateCalendarWeeks(calendarDayFactory.CreateCalendarDays(year, month));
 
     private IReadOnlyList<CalendarWeek> CreateCalendarWeeks(IReadOnlyList<IReadOnlyList<CalendarDay>> daysOfMonth)
@@ -50,16 +50,22 @@ public class CalendarYearFactory
             // first week of month and empty
             if (i == 0 && ContainsEmpty(days))
             {
-                weeks.Add(new(weekCounter, days));
+                weeks.Add(new(weeksCounter, days));
             }
             // last week of month and empty
             else if (i == daysOfMonth.Count - 1 && ContainsEmpty(days))
             {
-                weeks.Add(new(++weekCounter, days));
+                weeks.Add(new(++weeksCounter, days));
             }
             else
             {
-                weeks.Add(new(++weekCounter, days));
+                weeks.Add(new(++weeksCounter, days));
+            }
+
+            if (weeksCounter == 52)
+            {
+                // reset weeks counter
+                weeksCounter = 0;
             }
         }
 

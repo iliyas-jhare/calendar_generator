@@ -24,6 +24,8 @@ public class FileWriter
         return true;
     }
 
+    #region Detail
+
     private string CreateFilePath(string name)
     {
         var path = name.EndsWith(OutputFileExtension)
@@ -48,4 +50,6 @@ public class FileWriter
 
         return path;
     }
+
+    #endregion
 }

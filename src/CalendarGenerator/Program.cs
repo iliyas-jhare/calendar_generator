@@ -43,5 +43,4 @@ ExceptionPolicy.WithinGeneralException(() =>
     }
 
     Log.Info("Writing calendar finished.");
-
 });
