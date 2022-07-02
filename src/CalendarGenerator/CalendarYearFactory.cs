@@ -61,12 +61,6 @@ public class CalendarYearFactory
             {
                 weeks.Add(new(++weeksCounter, days));
             }
-
-            if (weeksCounter == 52)
-            {
-                // reset weeks counter
-                weeksCounter = 0;
-            }
         }
 
         return weeks;
