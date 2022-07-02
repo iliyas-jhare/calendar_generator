@@ -54,22 +54,22 @@ public class OptionsFactoryTests
             };
             yield return new object[]
             {
-                new[] { HelpOptionName },
-                new Option[] { new(HelpOptionName, default) }
+                new[] { HelpOption },
+                new Option[] { new(HelpOption, default) }
             };
             yield return new object[]
             {
                 new[]
                 {
-                    OutputOptionName,
+                    OutputOption,
                     "file",
-                    YearOptionName,
+                    YearOption,
                     "year"
                 },
                 new Option[]
                 {
-                    new(OutputOptionName, "file"),
-                    new(YearOptionName, "year")
+                    new(OutputOption, "file"),
+                    new(YearOption, "year")
                 }
             };
         }
@@ -79,16 +79,16 @@ public class OptionsFactoryTests
     {
         get
         {
-            yield return new object[] { new[] { HelpOptionName }, false };
-            yield return new object[] { new[] { OutputOptionName }, false };
-            yield return new object[] { new[] { YearOptionName }, false };
+            yield return new object[] { new[] { HelpOption }, false };
+            yield return new object[] { new[] { OutputOption }, false };
+            yield return new object[] { new[] { YearOption }, false };
             yield return new object[]
             {
                 new[]
                 {
-                    YearOptionName,
+                    YearOption,
                     "year",
-                    OutputOptionName,
+                    OutputOption,
                     "file"
                 }, true
             };
@@ -96,11 +96,11 @@ public class OptionsFactoryTests
             {
                 new[]
                 {
-                    YearOptionName,
+                    YearOption,
                     "year",
-                    OutputOptionName,
+                    OutputOption,
                     "file",
-                    HelpOptionName,
+                    HelpOption,
                     "blah"
                 }, true
             };

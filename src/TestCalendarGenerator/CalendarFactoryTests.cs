@@ -6,16 +6,17 @@ namespace TestCalendarGenerator;
 public class CalendarFactoryTests
 {
     [TestMethod]
-    public void Given_When_Then()
+    public void Given_program_option_Then_should_create_calendar_years()
     {
         // Arrange
         var underTest = new CalendarFactory();
 
         // Act
-        var actual = underTest.CreateCalendarYears(new(Constants.YearOptionName, "2022"));
+        var actual = underTest.CreateCalendarYears(new(Constants.YearOption, "2022"));
 
         // Assert
-        var html = new HtmlWriter().CreateCalendar(actual);
+        Assert.IsNotNull(actual);
+        Assert.IsTrue(actual.Any());
     }
 
     #region Detail

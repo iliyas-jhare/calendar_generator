@@ -6,8 +6,8 @@ public class HtmlWriter
 {
     private const string BeigeColor = "beige";
     private const string WhiteSmokeColor = "whitesmoke";
-    private const string CellStyle = "style=\"padding:6\"";
-    private const string TableStyle = "style=\"margin:10\"";
+    private const string PaddingStyle = "style=\"padding:6\"";
+    private const string MarginStyle = "style=\"margin:10\"";
 
     private IReadOnlyList<string> CalendarColumnHeaders { get; }
 
@@ -41,7 +41,7 @@ public class HtmlWriter
 
     private string CreateTables(CalendarYear year) =>
         new StringBuilder()
-            .AppendLine($"<h1>{year.Name}</h1>")
+            .AppendLine($"<h1 {MarginStyle}>{year.Name}</h1>")
             .AppendJoin(Environment.NewLine, year.Months.Select(CreateTable))
             .ToString();
 
@@ -52,7 +52,7 @@ public class HtmlWriter
 
     private string CreateTable(CalendarMonth month) =>
         new StringBuilder()
-            .AppendLine($"<table {TableStyle} border=\"1\">")
+            .AppendLine($"<table {MarginStyle} border=\"1\">")
             .AppendLine(CreateTableHeaderRow(month.Name, BeigeColor, 8))
             .AppendLine(CreateTableHeadersRow(CalendarColumnHeaders, WhiteSmokeColor))
             .AppendJoin(Environment.NewLine, month.Weeks.Select(w => CreateTableRow(w, WhiteSmokeColor)))
@@ -86,14 +86,14 @@ public class HtmlWriter
     private static string CreateTableHeader(string name, string color, int colspan = 0) =>
         colspan > 0
             ? new StringBuilder()
-                .AppendJoin(" ", "<th", CellStyle, $"bgcolor=\"{color}\"", $"colspan=\"{colspan}\">", name, "</th>")
+                .AppendJoin(" ", "<th", PaddingStyle, $"bgcolor=\"{color}\"", $"colspan=\"{colspan}\">", name, "</th>")
                 .ToString()
             : new StringBuilder()
-                .AppendJoin(" ", "<th", CellStyle, $"bgcolor=\"{color}\">", name, "</th>")
+                .AppendJoin(" ", "<th", PaddingStyle, $"bgcolor=\"{color}\">", name, "</th>")
                 .ToString();
 
     private static string CreateTableData(CalendarDay day) =>
-        $"<td {CellStyle} align=\"center\">{day.Name}</td>";
+        $"<td {PaddingStyle} align=\"center\">{day.Name}</td>";
 
     #endregion
 }

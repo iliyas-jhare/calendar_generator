@@ -11,14 +11,14 @@ public class OptionsFactory
     {
         AllOptions = new List<string>
         {
-            OutputOptionName,
-            YearOptionName,
-            HelpOptionName
+            OutputOption,
+            YearOption,
+            HelpOption
         };
         RequiredOptions = new List<string>
         {
-            OutputOptionName,
-            YearOptionName
+            OutputOption,
+            YearOption
         };
     }
 
@@ -32,17 +32,22 @@ public class OptionsFactory
                 continue;
             yield return CreateOption(arg, GetOptionValue(args, i));
         }
+
+        Log.Info("Program options created.");
     }
 
     public bool RequiredOptionsExist(IEnumerable<Option> options)
         => RequiredOptions.All(target => options.Any(o => OptionExist(o, target)));
+
+    public bool HelpRequested(IEnumerable<Option> options)
+        => options.Any(o => o.Is(HelpOption));
 
     #region Detail
 
     private static bool OptionExist(Option option, string name)
         => option is not null &&
            !string.IsNullOrEmpty(option.Name) &&
-           option.Name == name &&
+           option.Is(name) &&
            !string.IsNullOrEmpty(option.Value);
 
     private bool IsAnOption(string name)

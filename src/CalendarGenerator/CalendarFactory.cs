@@ -19,7 +19,7 @@ public class CalendarFactory
     public IReadOnlyList<CalendarYear> CreateCalendarYears(Option option)
     {
         if (option is null ||
-            option.Name != Constants.YearOptionName ||
+            !option.Is(Constants.YearOption) ||
             string.IsNullOrEmpty(option.Value))
         {
             throw new ArgumentException("Invalid option found.", nameof(option));
@@ -34,6 +34,8 @@ public class CalendarFactory
             })
             .ToArray();
     }
+
+    #region Detail
 
     private IReadOnlyList<CalendarMonth> CreateCalendarMonths(int year) =>
         MonthNumbers.Select(month => new CalendarMonth(month, CreateCalendarWeeks(year, month))).ToArray();
@@ -121,4 +123,6 @@ public class CalendarFactory
         var year = Convert.ToInt32(option.Value);
         return new[] { year - 1, year, year + 1 };
     }
+
+    #endregion
 }

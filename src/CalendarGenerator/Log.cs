@@ -1,5 +1,6 @@
 ﻿namespace CalendarGenerator;
 
+// Simple logger to output information/errors to the Console
 public static class Log
 {
     private const string InfoText = "INFO";
