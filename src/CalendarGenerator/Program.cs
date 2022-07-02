@@ -2,6 +2,8 @@
 
 ExceptionPolicy.WithinGeneralException(() =>
 {
+    Log.Info("Started.");
+
     var optionsFactory = new OptionsFactory();
     var options = optionsFactory.CreateOptions(args).ToArray();
     if (optionsFactory.HelpRequested(options))
@@ -23,24 +25,27 @@ ExceptionPolicy.WithinGeneralException(() =>
         calendarYearFactory.CreateCalendarYears(options.Single(o => o.Is(Constants.YearOption)));
     if (!calendarYears.Any())
     {
-        Log.Error("Creating calendar has failed.");
+        Log.Error("Creating calendar years has failed.");
         return;
     }
+    Log.Info("Calendar years created.");
 
     var htmlWriter = new HtmlWriter();
     var htmlContents = htmlWriter.CreateCalendar(calendarYears);
     if (string.IsNullOrEmpty(htmlContents))
     {
-        Log.Error("Generating calendar HTML has failed.");
+        Log.Error("Creating calendar years HTML has failed.");
         return;
     }
+    Log.Info("Calendar years HTML created.");
 
     var fileWriter = new FileWriter();
     if (!fileWriter.Write(options.Single(o => o.Is(Constants.OutputOption)).Value, htmlContents))
     {
-        Log.Error("Writing calendar has failed.");
+        Log.Error("Writing calendar years HTML has failed.");
         return;
     }
+    Log.Info("Calendar years HTML written.");
 
-    Log.Info("Writing calendar finished.");
+    Log.Info("Finished.");
 });
