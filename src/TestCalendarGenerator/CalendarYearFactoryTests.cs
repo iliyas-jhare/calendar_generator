@@ -3,13 +3,13 @@ using CalendarGenerator;
 namespace TestCalendarGenerator;
 
 [TestClass]
-public class CalendarFactoryTests
+public class CalendarYearFactoryTests
 {
     [TestMethod]
     public void Given_program_option_Then_should_create_calendar_years()
     {
         // Arrange
-        var underTest = new CalendarFactory();
+        var underTest = new CalendarYearFactory(new CalendarDayFactory());
 
         // Act
         var actual = underTest.CreateCalendarYears(new(Constants.YearOption, "2022"));

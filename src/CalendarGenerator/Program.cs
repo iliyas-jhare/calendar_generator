@@ -17,9 +17,10 @@ ExceptionPolicy.WithinGeneralException(() =>
         return;
     }
 
-    var calendarFactory = new CalendarFactory();
+    var calendarDaysFactory = new CalendarDayFactory();
+    var calendarYearFactory = new CalendarYearFactory(calendarDaysFactory);
     var calendarYears =
-        calendarFactory.CreateCalendarYears(options.Single(o => o.Is(Constants.YearOption)));
+        calendarYearFactory.CreateCalendarYears(options.Single(o => o.Is(Constants.YearOption)));
     if (!calendarYears.Any())
     {
         Log.Error("Creating calendar has failed.");
